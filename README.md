@@ -28,9 +28,12 @@ This will generate all required files as defined in [petstore.yaml](src/main/res
 
 Set properties in [application.properties](src/main/resources/application.properties)
 
-The authentication mode (mTLS or OAuth1.0a) must be set using 
+The authentication mode (mTLS or OAuth1.0a) must be set by adding the following to your run command 
 ```
 -Dspring.profiles.active=oauth
+```
+or
+```
 -Dspring.profiles.active=mtls
 ```
 If using the API in OAuth1.0a mode the following are required in [application-oauth.properties](src/main/resources/application-oauth.properties)
@@ -55,22 +58,15 @@ mastercard.encryption.decryptionKeyPassword
 
 ## Running the Application
 
-To see how the average flow of each use case please see the [flow folder](src/test/java/com/mastercard/app/petstore/flow) and run a test. Note this tests will not
-run if a `basePath` in [application.properties](src/main/resources/application.properties) is not set. These tests call
-out to the service, so they must be set.
-
-The tests can be run using
-```shell
-mvn test -Dspring.profiles.active=oauth
+To run the application use the command
 ```
-or 
-```shell
-mvn test -Dspring.profiles.active=mtls
+mvn spring-boot:run
 ```
+The will execute three scenarios covering all use cases
 
 ## Example Scenarios
 
-Example scenarios can be found under `src/main/java/com/mastercard/app/petstore/examples`
+Example scenarios can be found under [here](src/main/java/com/mastercard/app/petstore/examples)
 There are provide simples uses cases, documented below
 
 ### Adoption Flow Example
